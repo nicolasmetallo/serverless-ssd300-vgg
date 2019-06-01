@@ -1,6 +1,5 @@
 # SSD implementation in PyTorch + AWS Lambda
----
-The idea of this repo is to create a Lambda function that takes binary input (image) and returns a JSON. For my use case, I'm looking to find if there's a person in the picture, and make a crop from the image out of that. If there's no person in the image, then return everything that you have found (i.e. boxes, labels, confidence scores) for the remaining 21 classes (VOC dataset).
+The idea of this repo is to create a Lambda function that takes binary input (image) and returns a JSON. For my use case, I'm looking to find if there's a person in the picture, and make a crop from the image out of that. If there's no person in the image, then return everything that you have found (i.e. boxes, labels, confidence scores) for the remaining 21 classes (VOC dataset). I'm going to use [this implementation](https://github.com/lufficc/SSD) which I think is one of the best performing in CPU, but you could also use the latest [Torchvision update](https://pytorch.org/blog/torchvision03/).
 
 ## Pre-requisities
 You should have:
@@ -113,7 +112,7 @@ The output is:
 +---------------------------------------------------------------+-------------+----------------------------------------------------------------------------+
 |                          Description                          |  OutputKey  |                                OutputValue                                 |
 +---------------------------------------------------------------+-------------+----------------------------------------------------------------------------+
-|  API Gateway endpoint URL for Prod stage for PyTorch function |  PyTorchApi |   https://53f8w4fcua.execute-api.us-east-1.amazonaws.com/Prod/invocations/      |
+|  API Gateway endpoint URL for Prod stage for PyTorch function |  PyTorchApi |   https://53f8w4fcua.execute-api.us-east-1.amazonaws.com/Prod/invocations/     |
 +---------------------------------------------------------------+-------------+----------------------------------------------------------------------------+
 
 ```
@@ -133,7 +132,6 @@ I usually start a jupyter lab instance on the Terminal
 
 ```
 jupyter lab
-
 ```
 
 And then run the `test.ipynb` notebook. The important bit is this:
