@@ -1,0 +1,4 @@
+.DS_Store
+.aws*
+.ipynb_check*
+.vscode*

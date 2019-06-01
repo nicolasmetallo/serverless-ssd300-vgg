@@ -1,0 +1,4 @@
+Cython==0.29.7
+ninja==1.9.0
+opencv-python==4.1.0.25
+yacs==0.1.6
