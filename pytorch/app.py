@@ -56,7 +56,8 @@ def get_configuration(config_file):
     
     return cfg
     
-def load_model(iou_threshold=0.5, score_threshold=0.5):
+def load_model(config_file='SSD/configs/ssd300_voc0712.yaml',
+               iou_threshold=0.5, score_threshold=0.5):
     cfg = get_configuration(config_file)
     class_names = VOCDataset.class_names
     global device 
@@ -104,7 +105,7 @@ def predict(input_object, model):
     response = {}
 
     try:
-        roi = max([(a,b,c) for a,b,c in zip(labels, scores, boxes) if a == 15])
+        roi = max([(a,b,c) for a,b,c in zip(labels, scores, boxes) if a == 15], default=0)
         if roi[2].size == 4:
             xmin, ymin, xmax, ymax = [roi[2][x] for x in range(4)]
             response['is_person'] = True
@@ -127,7 +128,6 @@ def predict(input_object, model):
     return response
 
 # load the model when lambda execution context is created
-config_file='SSD/configs/ssd300_voc0712.yaml'
 model=load_model()
     
 def input_fn(request_body):
